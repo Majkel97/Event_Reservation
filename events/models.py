@@ -21,6 +21,7 @@ class Event(models.Model):
         __str__(): Returns the name of the event.
         imageURL(): Returns the URL of the event's image (or an empty string if not available).
     """
+
     # id = models.UUIDField(default = uuid.uuid4, unique=True, primary_key = True, editable=False)
     name = models.CharField(max_length=150, null=True)
     image = models.ImageField(null=True, blank=True)
@@ -57,6 +58,7 @@ class Reservation(models.Model):
     Methods:
         __str__(): Returns a string representation of the reservation.
     """
+
     # id = models.UUIDField(default = uuid.uuid4, unique=True, primary_key = True, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, null=False)
     event = models.ForeignKey(Event, on_delete=models.CASCADE, blank=False, null=False)

@@ -1,6 +1,7 @@
 from django.core.mail import send_mail
 from django.conf import settings
 
+
 def send_confirmation_email(event_data, currentuser, reservation_data):
     """
     Sends a confirmation email for a reservation to the specified user.
@@ -23,11 +24,11 @@ def send_confirmation_email(event_data, currentuser, reservation_data):
                 \nJeżeli chcesz anulować swoją rezerwację, skorzystaj z linku poniżej:
                 \n{link}
                 """.format(
-                    name=event_data.name,
-                    start_date=event_data.start_date,
-                    end_date=event_data.end_date,
-                    link=cancel_link,
-                )
+        name=event_data.name,
+        start_date=event_data.start_date,
+        end_date=event_data.end_date,
+        link=cancel_link,
+    )
     mail_to = currentuser.email
     mail_from = getattr(settings, "DEFAULT_EMAIL", "")
     send_mail(subject, message, mail_from, [mail_to], fail_silently=False)

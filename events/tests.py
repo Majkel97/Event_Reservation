@@ -5,22 +5,24 @@ from events.models import Event, Reservation
 from django.contrib.auth.models import User
 from events.views import check_data_and_delete
 
+
 class EventViewTests(TestCase):
     def setUp(self):
         # Create a user
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.user = User.objects.create_user(
+            username="testuser", password="testpassword"
+        )
 
         # Create an event
         self.event = Event.objects.create(
-            title="Test Event",
-            start_date=timezone.now() + timezone.timedelta(days=1)
+            title="Test Event", start_date=timezone.now() + timezone.timedelta(days=1)
         )
 
     def test_index_view_post(self):
         # Log in the user
-        self.client.login(username='testuser', password='testpassword')
+        self.client.login(username="testuser", password="testpassword")
 
-        response = self.client.post(reverse('index'), {'id': self.event.id})
+        response = self.client.post(reverse("index"), {"id": self.event.id})
 
         # Check if the reservation was created
         self.assertEqual(response.status_code, 302)  # Redirects to 'management' view
@@ -30,20 +32,20 @@ class EventViewTests(TestCase):
 
     def test_management_view(self):
         # Log in the user
-        self.client.login(username='testuser', password='testpassword')
+        self.client.login(username="testuser", password="testpassword")
 
-        response = self.client.get(reverse('management'))
+        response = self.client.get(reverse("management"))
 
         # Check if the 'management' view returns a successful response
         self.assertEqual(response.status_code, 200)
 
     def test_delete_view(self):
         # Log in the user
-        self.client.login(username='testuser', password='testpassword')
+        self.client.login(username="testuser", password="testpassword")
 
         reservation = Reservation.objects.create(user=self.user, event=self.event)
 
-        response = self.client.post(reverse('delete'), {'id': reservation.id})
+        response = self.client.post(reverse("delete"), {"id": reservation.id})
 
         # Check if the reservation is deleted
         self.assertEqual(response.status_code, 200)

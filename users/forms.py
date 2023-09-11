@@ -6,14 +6,29 @@ from crispy_forms.layout import Field, Layout
 
 
 class SignUpForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, required=True, help_text='Required.', label= 'First name')
-    last_name = forms.CharField(max_length=30, required=True, help_text='Required.', label= 'Last name')
-    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.', label= 'Email address')
-    
+    first_name = forms.CharField(
+        max_length=30, required=True, help_text="Required.", label="First name"
+    )
+    last_name = forms.CharField(
+        max_length=30, required=True, help_text="Required.", label="Last name"
+    )
+    email = forms.EmailField(
+        max_length=254,
+        help_text="Required. Inform a valid email address.",
+        label="Email address",
+    )
+
     class Meta:
         model = User
-        fields = ('username', 'password1', 'password2', 'first_name', 'last_name','email')
-    
+        fields = (
+            "username",
+            "password1",
+            "password2",
+            "first_name",
+            "last_name",
+            "email",
+        )
+
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
         helper = self.helper = FormHelper()

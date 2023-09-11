@@ -22,12 +22,16 @@ def index(request):
         event_id = request.POST.get("id")
         if event_id:
             event_data = Event.objects.get(id=event_id)
-            reservation_data = Reservation.objects.create(user=request.user, event=event_data)
+            reservation_data = Reservation.objects.create(
+                user=request.user, event=event_data
+            )
             current_user = request.user
             send_confirmation_email(event_data, current_user, reservation_data)
             return redirect("management")
 
-    events = Event.objects.filter(start_date__gte=datetime.now(timezone.utc)).order_by("start_date")
+    events = Event.objects.filter(start_date__gte=datetime.now(timezone.utc)).order_by(
+        "start_date"
+    )
     context = {"events": events}
     return render(request, "events/index.html", context)
 
@@ -46,7 +50,7 @@ def management(request):
     Returns:
         HttpResponse: The HTTP response object containing the rendered template and context.
     """
-    
+
     if request.method == "POST":
         event_data = request.POST["id"]
         record = Reservation.objects.get(id=event_data, user=request.user)

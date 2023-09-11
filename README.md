@@ -72,9 +72,9 @@ The project consists of the following key components:
    POSTGRES_HOST=db
    POSTGRES_PORT=5432
 
-    # PayPal settings
-   PAYPAL_CLIENT_ID = 'YOUR_PAYPAL_CLIENT_ID'
-   PAYPAL_CURRENCY = 'CURRENCY'
+   # Email settings
+   EMAIL_HOST_USER = "YOUR_EMAIL_ADDRESS"
+   EMAIL_HOST_PASSWORD = "YOUR_EMAIL_PASSWORD"
    ```
 
 3. Make sure you have docker installed and running
