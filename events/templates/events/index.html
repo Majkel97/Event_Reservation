@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Events {% endblock %}
+{% block content %} 
+<div class = "row">
+    {% for event in events%}
+    <div class="card mb-4 text-dark bg-light border-secondary" style=" margin: 10px; width: 32rem;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{event.imageURL}}" class="img-fluid rounded-start" style="height: 100%;" placeholder = "Event">
+            </div>
+            <div class="col-md-8" style="padding: 10px;">
+                <h5 class="card-title">{{event.name}}</h5>
+                <p class="card-text">Start date: {{event.start_date}}</p>
+                <p class="card-text">End date: {{event.end_date}}</p>
+                <form method = "post" name = {{event.name}}>
+                    {% csrf_token %}
+                        <input type = "hidden" value = "{{event.id}}" name = "id">
+                    {% if request.user.is_authenticated %}
+                        <button  type="submit" class = "btn btn-outline-success">Order</button>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
