@@ -40,16 +40,28 @@ The project consists of the following key components:
 
    - This view displays a list of upcoming events and allows users to make reservations.
    - It sends confirmation emails to users for successful reservations.
+  
+   <img src="https://github.com/Majkel97/Event_Reservation/blob/main/img_for_readme/2_events_list.png?raw=true"  width="800px" height="auto">
+   <img src="https://github.com/Majkel97/Event_Reservation/blob/main/img_for_readme/4_email_confirmation.png?raw=true"  width="800px" height="auto">
 
 2. **Management View**:
 
    - This view allows users to manage their reservations and check for expired reservations.
    - Users can delete reservations that are not expired.
+  
+   <img src="https://github.com/Majkel97/Event_Reservation/blob/main/img_for_readme/3_ordered_events.png?raw=true"  width="800px" height="auto">
 
 3. **Delete View**:
 
    - This view handles the deletion of user reservations and checks for expiration.
    - If a reservation is not expired, it can be deleted.
+
+4. **Sign Up and Log In**:
+
+   - These views handle the creating account and log-in
+   - Also users can log out from the app.
+  
+   <img src="https://github.com/Majkel97/Event_Reservation/blob/main/img_for_readme/1_signup.png?raw=true"  width="800px" height="auto">
 
 ## Instalation
 
